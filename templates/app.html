@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SafeCity</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+<body background="{{url_for('static', filename='background.jpg')}}" >
+<h1 align="center">Safecity</h1>
+<h2 align="center">MultiLabel Classification of Sexual Harassement Personal Stories</h2>
+
+<hr>
+
+<img width="50%" height="280" src="{{url_for('static', filename='metoo.jpg')}}" class="center" />
+<table >
+  <tr>
+    <td>
+<form action="{{ url_for("predict")}}" method="post">
+<textarea  rows="5" cols="60" id="text" name="query" placeholder="{{text}}">{{query}}</textarea>
+    </td>
+	<td>
+<button type="submit"   class="btn info">Predict</button> </form>
+    </td>
+	<td>
+
+{% if flag %}
+<ul class="fa-ul">
+{%for i in range(0,3)%} 
+  {% if predictions[i]==1 %}
+    <li><span class="fa-li"><i class="fa fa-check-square"></i></span>{{labels[i]}}</li>
+  {% endif %}
+  {% if predictions[i]==0 %}
+  <li><span class="fa-li"><i class="fa fa-square"></i></span>{{labels[i]}}</li>
+  {% endif %}
+  <br>
+{%endfor%} 
+   {% if total==0 %}
+    <li><span class="fa-li"><i class="fa fa-check-square"></i></span>None of the Category</li>
+  {% endif %}
+  {% if total!=0 %}
+  <li><span class="fa-li"><i class="fa fa-square"></i></span>None of the Category</li>
+  {% endif %}
+  <br>
+</ul>
+{% endif %}
+
+{% if flag==False %}
+<ul class="fa-ul">
+{%for i in range(0,3)%} 
+  <li><span class="fa-li"><i class="fa fa-square"></i></span>{{labels[i]}}</li>
+  <br>
+{%endfor%} 
+   <li><span class="fa-li"><i class="fa fa-square"></i></span>None of the Category</li>
+   <br>
+</ul>
+{% endif %}
+    </td>
+  </tr>
+  
+</table>
+Example stories 1: Some people used to stare in a very inappropriate way which is not tolerable.It happened in the morning and Night.<br>
+     &emsp; &nbsp;  &emsp; &emsp;  &emsp; &emsp;      2: Amazingly rude faces were given to me by a guy during afternoon hours .<br>
+	&emsp;  &nbsp; &emsp; &emsp;  &emsp; &emsp;  3: i was walking upstairs on the bridge in dadar station when a man aged 20-25 touched my back and felt me. i turned around and slapped him.
+

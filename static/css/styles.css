@@ -1,0 +1,45 @@
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  border:1px solid dodgerblue;
+}
+
+/* On mouse-over */
+.btn:hover {background: #eee;}
+
+.success {color: green;}
+.info {color: dodgerblue;}
+.warning {color: orange;}
+.danger {color: red;}
+.default {color: black;}
+
+textarea {
+  width: 100%;
+  height: 140px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: ash;
+  resize: none;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table {
+    margin: 0 auto; /* or margin: 0 auto 0 auto */
+  }
+ 
+ 
+body{
+  color:white
+}
